@@ -1,7 +1,7 @@
 var scene = new THREE.Scene();
 /*PerspectiveCamera( fov : Number, aspect : Number, near : Number, far : Number )
-fov — Camera frustum vertical field of view.
-aspect — Camera frustum aspect ratio.
+fov — Camera frustum vertical field of view, from bottom to top of view, in degrees. Default is 50.
+aspect — Camera frustum aspect ratio, usually the canvas width / canvas height. Default is 1 (square canvas).
 near — Camera frustum near plane.
 far — Camera frustum far plane.*/
 var camera = new THREE.PerspectiveCamera (100,window.innerWidth/window.innerHeight,1,100);
