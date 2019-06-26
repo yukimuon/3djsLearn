@@ -25,22 +25,51 @@ var render= function(){
 };
 
 //shape
-var geometry=new THREE.BoxGeometry(2,2,2);
-var cubeMaterials =[
-    new THREE.MeshBasicMaterial({ map:new THREE.TextureLoader().load('60083415.jpg'), side: THREE.DoubleSide }), //R
-    new THREE.MeshBasicMaterial({ map:new THREE.TextureLoader().load('60083415.jpg'), side: THREE.DoubleSide }), //L
-    new THREE.MeshBasicMaterial({ map:new THREE.TextureLoader().load('60083415.jpg'), side: THREE.DoubleSide }), //T
-    new THREE.MeshBasicMaterial({ map:new THREE.TextureLoader().load('xiangjiaojun.jpg'), side: THREE.DoubleSide }), //B
-    new THREE.MeshBasicMaterial({ map:new THREE.TextureLoader().load('60083415.jpg'), side: THREE.DoubleSide }), //F
-    new THREE.MeshBasicMaterial({ map:new THREE.TextureLoader().load('60083415.jpg'), side: THREE.DoubleSide }) //B
-];
-
-//shape color texture
-var material = new THREE.MeshFaceMaterial(cubeMaterials);
-var cube= new THREE.Mesh( geometry, material );
+var geometry=new THREE.BoxGeometry(2.7,2.7,2.7);
+var cubeMaterials = new THREE.MeshLambertMaterial({ map:new THREE.TextureLoader().load('box.jpg'), side: THREE.DoubleSide });
+var cube= new THREE.Mesh( geometry, cubeMaterials );
 scene.add(cube);
+cube.position.x=7;
+cube.position.y=0;
+cube.position.z=0;
 
-camera.position.z=3
+
+
+//floor
+var floorGeometry = new THREE.CubeGeometry(40,2,20);
+var floorMaterial = new THREE.MeshLambertMaterial({map: new THREE.TextureLoader().load('bg.jpg'),side:THREE.DoubleSide});
+var floorcube = new THREE.Mesh(floorGeometry,floorMaterial);
+floorcube.position.y=-5;
+scene.add(floorcube);
+
+
+
+camera.position.x=0;
+camera.position.y=8;
+camera.position.z=1;
+
+
+//var ambientLight = new THREE.AmbientLight(0xFFFFFF,1  );
+//scene.add(ambientLight);  
+
+var light1 = new THREE.PointLight(0xFFFFFF,4,50);
+scene.add(light1);
+
+light1.position.z=8;
+light1.position.x=12;
+light1.position.y=0;
+
+
+
+
+var light3 = new THREE.PointLight(0xFFFFFF,2,50);
+scene.add(light3);
+
+light3.position.z=20;
+light3.position.x=0;
+light3.position.y=10;
+
+
 
 //orbit control
 var controls = new THREE.OrbitControls( camera, renderer.domElement );
